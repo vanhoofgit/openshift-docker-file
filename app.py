@@ -3,6 +3,10 @@ import os
 app= Flask(__name__)
 workers=int(os.environ.get('GUNICORN_PROCESSES','3'))
 threads=int(os.environ.get('GUNICORN_ThREADS','1'))
+forwarded_allow_ips = '*'
+secure_scheme_headers = { 'X-Forwarded-Proto':'https'}
+
+
 @app.route('/')
 def index():
     return '<h3> zou het dan toch lukken ? <h3>'
